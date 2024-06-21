@@ -1,15 +1,19 @@
 package com.example.pm2e10425;
 
 import android.annotation.SuppressLint;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.pm2e10425.db.dbHelper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,8 +30,17 @@ public class MainActivity extends AppCompatActivity {
 
 
             @Override
-            public void onClick(View v) {
-
+            public void onClick(View view) {
+            dbHelper dbHelper = new dbHelper(MainActivity.this);
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                if(db != null){
+                    Toast.makeText(MainActivity.this, "La lista de contactos a sido creada", Toast.LENGTH_LONG
+                    ).show();
+                }
+                else {
+                    Toast.makeText(MainActivity.this, "no se a podido crear la lista de contactos", Toast.LENGTH_LONG
+                    ).show();
+                }
             }
         });
 
