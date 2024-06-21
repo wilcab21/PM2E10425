@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">PM2E10425</string>
+    <string name="IngresaunNombre">Ingresa un Nombre</string>
+    <string name="telefono">Ingresa el telefono</string>
+    <string name="nota">Ingresa una nota</string>
+    <string name="btn_guardar">Guardar el contacto</string>
+    <string name="Menu">Nuevo contacto</string>
 </resources>

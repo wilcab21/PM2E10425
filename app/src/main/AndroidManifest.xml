@@ -10,9 +10,19 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.PM2E10425"
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".NActivity"
+            android:parentActivityName=".MainActivity"
+            android:exported="false" >
+<meta-data
+    android:name="android.support.PARENT_ACTIVITY"
+    android:value=".MainActivity"/>
+    </activity>
+
+
+    <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
