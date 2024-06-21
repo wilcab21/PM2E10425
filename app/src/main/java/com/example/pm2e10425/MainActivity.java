@@ -16,12 +16,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pm2e10425.Adapters.ListaContactosAdapter;
+import com.example.pm2e10425.db.DbContactos;
 import com.example.pm2e10425.db.dbHelper;
+import com.example.pm2e10425.entidades.Contactos;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnCrea;
+    RecyclerView listaContactos;
+    ArrayList<Contactos> listaArrayContactos;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -29,32 +37,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        btnCrea = findViewById(R.id.btnCrea);
-        btnCrea.setOnClickListener(new View.OnClickListener() {
+        listaContactos = findViewById(R.id.listaContactos);
+        listaContactos.setLayoutManager(new LinearLayoutManager(this
+        ));
 
+        DbContactos dbcontactos = new DbContactos(MainActivity.this);
+        listaArrayContactos = new ArrayList<>();
+        ListaContactosAdapter adapter = new ListaContactosAdapter(dbcontactos.visualizarContactos());
+        listaContactos.setAdapter(adapter);
 
-            @Override
-            public void onClick(View view) {
-            dbHelper dbHelper = new dbHelper(MainActivity.this);
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
-                if(db != null){
-                    Toast.makeText(MainActivity.this, "La lista de contactos a sido creada", Toast.LENGTH_LONG
-                    ).show();
-                }
-                else {
-                    Toast.makeText(MainActivity.this, "no se a podido crear la lista de contactos", Toast.LENGTH_LONG
-                    ).show();
-                }
-            }
-        });
-
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
     }
+
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.principal_menu, menu);

@@ -2,9 +2,14 @@ package com.example.pm2e10425.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
+
+import com.example.pm2e10425.entidades.Contactos;
+
+import java.util.ArrayList;
 
 public class DbContactos extends dbHelper{
 
@@ -30,5 +35,26 @@ public class DbContactos extends dbHelper{
         }
         return id;
 
+    }
+    public ArrayList<Contactos> visualizarContactos(){
+        dbHelper dbHelper = new dbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ArrayList<Contactos> listaContactos = new ArrayList<>();
+        Contactos contacto = null;
+        Cursor cursorContactos = null;
+
+        cursorContactos = db.rawQuery("SELECT * FROM " + TABLE_CONTACTOS, null);
+        if(cursorContactos.moveToFirst()){
+            do{
+                contacto = new Contactos();
+                contacto.setId(cursorContactos.getInt(0));
+                contacto.setNombre(cursorContactos.getString(1));
+                contacto.setTelefono(cursorContactos.getString(2));
+                contacto.setNota(cursorContactos.getString(3));
+                listaContactos.add(contacto);
+            } while (cursorContactos.moveToNext());
+        }
+        cursorContactos.close();
+        return listaContactos;
     }
 }
