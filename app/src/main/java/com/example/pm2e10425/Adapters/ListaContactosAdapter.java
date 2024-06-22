@@ -1,5 +1,7 @@
 package com.example.pm2e10425.Adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pm2e10425.R;
+import com.example.pm2e10425.VisualizarActivity;
 import com.example.pm2e10425.entidades.Contactos;
 
 import java.util.ArrayList;
@@ -31,6 +34,8 @@ public class ListaContactosAdapter extends RecyclerView.Adapter<ListaContactosAd
     public void onBindViewHolder(@NonNull ContactoViewHolder holder, int position) {
 holder.viewNombre.setText(listaContactos.get(position).getNombre());
         holder.viewTelefono.setText(listaContactos.get(position).getTelefono());
+        holder.viewNota.setText(listaContactos.get(position).getNota());
+
     }
 
     @Override
@@ -39,7 +44,7 @@ holder.viewNombre.setText(listaContactos.get(position).getNombre());
     }
 
     public class ContactoViewHolder extends RecyclerView.ViewHolder {
-        TextView viewNombre, viewTelefono;
+        TextView viewNombre, viewTelefono, viewNota;
 
 
         public ContactoViewHolder(@NonNull View itemView) {
@@ -47,6 +52,17 @@ holder.viewNombre.setText(listaContactos.get(position).getNombre());
 
             viewNombre = itemView.findViewById(R.id.viewNombre);
             viewTelefono = itemView.findViewById(R.id.viewTelefono);
+            viewNota = itemView.findViewById(R.id.viewNota);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Context context = viewNombre.getContext();
+                    Intent intent = new Intent(context, VisualizarActivity.class);
+                    intent.putExtra("ID", listaContactos.get(getAdapterPosition()).getId());
+                    context.startActivity(intent);
+                }
+            });
 
         }
     }

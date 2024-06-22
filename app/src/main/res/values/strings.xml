@@ -5,4 +5,9 @@
     <string name="nota">Ingresa una nota</string>
     <string name="btn_guardar">Guardar el contacto</string>
     <string name="Menu">Nuevo contacto</string>
+    <string name="hint_nom">nombre\n</string>
+    <string name="hint_nombre">Nombre:</string>
+    <string name="hint_telefono">Telefono:</string>
+    <string name="hint_nota">Nota:</string>
+    <string name="lista">Lista</string>
 </resources>

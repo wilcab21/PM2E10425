@@ -12,17 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
         tools:targetApi="31">
+
         <activity
             android:name=".NActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" >
-<meta-data
-    android:name="android.support.PARENT_ACTIVITY"
-    android:value=".MainActivity"/>
-    </activity>
-
-
-    <activity
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -31,6 +30,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".VisualizarActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+        </activity>
+
     </application>
 
 </manifest>

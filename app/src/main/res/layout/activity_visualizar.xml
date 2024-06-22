@@ -5,35 +5,53 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context=".NActivity">
+    tools:context=".VisualizarActivity">
+
+
+    <TextView
+        android:id="@+id/viewNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hint_nombre" />
 
     <EditText
         android:id="@+id/txtNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/IngresaunNombre"
+        android:labelFor="@id/viewNombre"
         android:inputType="text"
         android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/viewTelefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hint_telefono" />
+
 
     <EditText
         android:id="@+id/txtTelefono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/telefono"
+        android:labelFor="@id/viewTelefono"
         android:inputType="phone"
         android:textSize="20sp" />
+    <TextView
+        android:id="@+id/viewNota"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hint_nota" />
 
     <EditText
         android:id="@+id/txtNota"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/nota"
         android:inputType="text"
+        android:labelFor="@id/viewNota"
         android:textSize="20sp" />
 
     <Button
@@ -42,4 +60,5 @@
         android:layout_height="wrap_content"
         android:text="@string/btn_guardar"
         android:textSize="20sp" />
+
 </LinearLayout>
